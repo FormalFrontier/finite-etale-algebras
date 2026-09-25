@@ -1,0 +1,587 @@
+{
+  "analyzed_source_revision": "fe7e68f76a3359419c4c44720f4171a421c51fad",
+  "api_sha256": "c87e3086de4e955e9d987eb638e7b92f867727c76da22a67fd9491d22d8ce69d",
+  "display_entries": [
+    {
+      "end": 36,
+      "kind": "def",
+      "name": "Algebra.IsFiniteEtale",
+      "path": "FiniteEtaleAlgebras/MaximalSubalgebra.lean",
+      "start": 32
+    },
+    {
+      "end": 55,
+      "kind": "theorem",
+      "name": "Algebra.IsFiniteEtale.of_surjective",
+      "path": "FiniteEtaleAlgebras/MaximalSubalgebra.lean",
+      "start": 43
+    },
+    {
+      "end": 68,
+      "kind": "def",
+      "name": "Subalgebra.IsFiniteEtale",
+      "path": "FiniteEtaleAlgebras/MaximalSubalgebra.lean",
+      "start": 65
+    },
+    {
+      "end": 78,
+      "kind": "theorem",
+      "name": "Subalgebra.isFiniteEtale_bot",
+      "path": "FiniteEtaleAlgebras/MaximalSubalgebra.lean",
+      "start": 70
+    },
+    {
+      "end": 122,
+      "kind": "theorem",
+      "name": "Subalgebra.exists_isFiniteEtale_of_isIdempotentElem",
+      "path": "FiniteEtaleAlgebras/MaximalSubalgebra.lean",
+      "start": 80
+    },
+    {
+      "end": 140,
+      "kind": "theorem",
+      "name": "Subalgebra.IsFiniteEtale.sup",
+      "path": "FiniteEtaleAlgebras/MaximalSubalgebra.lean",
+      "start": 128
+    },
+    {
+      "end": 169,
+      "kind": "theorem",
+      "name": "Subalgebra.exists_greatest_isFiniteEtale_of_finrank_le",
+      "path": "FiniteEtaleAlgebras/MaximalSubalgebra.lean",
+      "start": 144
+    },
+    {
+      "end": 43,
+      "kind": "def",
+      "name": "GaloisDescent.coefficientwise",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 41
+    },
+    {
+      "end": 51,
+      "kind": "theorem",
+      "name": "GaloisDescent.coefficientwise_tmul",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 49
+    },
+    {
+      "end": 146,
+      "kind": "theorem",
+      "name": "GaloisDescent.fixed_iff_mem_range_includeRight",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 111
+    },
+    {
+      "end": 154,
+      "kind": "theorem",
+      "name": "GaloisDescent.coefficientwise_one",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 149
+    },
+    {
+      "end": 163,
+      "kind": "theorem",
+      "name": "GaloisDescent.coefficientwise_mul",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 157
+    },
+    {
+      "end": 171,
+      "kind": "theorem",
+      "name": "GaloisDescent.coefficientwise_smul",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 166
+    },
+    {
+      "end": 199,
+      "kind": "def",
+      "name": "GaloisDescent.fixedSubmodule",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 194
+    },
+    {
+      "end": 205,
+      "kind": "theorem",
+      "name": "GaloisDescent.mem_fixedSubmodule",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 202
+    },
+    {
+      "end": 216,
+      "kind": "def",
+      "name": "GaloisDescent.fixedScalarExtension",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 207
+    },
+    {
+      "end": 223,
+      "kind": "theorem",
+      "name": "GaloisDescent.fixedScalarExtension_tmul",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 219
+    },
+    {
+      "end": 344,
+      "kind": "def",
+      "name": "GaloisDescent.fixedScalarExtensionEquiv",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 333
+    },
+    {
+      "end": 349,
+      "kind": "def",
+      "name": "GaloisDescent.IsStable",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 346
+    },
+    {
+      "end": 353,
+      "kind": "def",
+      "name": "GaloisDescent.descended",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 351
+    },
+    {
+      "end": 361,
+      "kind": "theorem",
+      "name": "GaloisDescent.mem_descended",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 356
+    },
+    {
+      "end": 395,
+      "kind": "theorem",
+      "name": "GaloisDescent.baseChange_descended_eq",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 363
+    },
+    {
+      "end": 400,
+      "kind": "def",
+      "name": "GaloisDescent.scalarExtensionMap",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 397
+    },
+    {
+      "end": 407,
+      "kind": "theorem",
+      "name": "GaloisDescent.scalarExtensionMap_tmul",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 403
+    },
+    {
+      "end": 416,
+      "kind": "theorem",
+      "name": "GaloisDescent.scalarExtensionMap_injective",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 410
+    },
+    {
+      "end": 423,
+      "kind": "def",
+      "name": "GaloisDescent.reconstructionEquiv",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 418
+    },
+    {
+      "end": 429,
+      "kind": "theorem",
+      "name": "GaloisDescent.coe_reconstructionEquiv_apply",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 425
+    },
+    {
+      "end": 435,
+      "kind": "theorem",
+      "name": "GaloisDescent.reconstructionEquiv_tmul",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 431
+    },
+    {
+      "end": 441,
+      "kind": "theorem",
+      "name": "GaloisDescent.scalarExtensionMap_range",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 437
+    },
+    {
+      "end": 455,
+      "kind": "theorem",
+      "name": "GaloisDescent.descended_isFiniteEtale",
+      "path": "FiniteEtaleAlgebras/SemilinearDescent.lean",
+      "start": 443
+    },
+    {
+      "end": 63,
+      "kind": "theorem",
+      "name": "Algebra.IsFiniteEtale.natCard_connectedComponents_primeSpectrum_eq_finrank",
+      "path": "FiniteEtaleAlgebras/SpectrumComponents.lean",
+      "start": 36
+    },
+    {
+      "end": 75,
+      "kind": "theorem",
+      "name": "Algebra.IsFiniteEtale.finrank_le_natCard_connectedComponents_of_surjective",
+      "path": "FiniteEtaleAlgebras/SpectrumComponents.lean",
+      "start": 65
+    },
+    {
+      "end": 37,
+      "kind": "def",
+      "name": "SeparableClosureDescent.extensionMap",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 35
+    },
+    {
+      "end": 42,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.extensionMap_tmul",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 39
+    },
+    {
+      "end": 50,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.extensionMap_injective",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 44
+    },
+    {
+      "end": 56,
+      "kind": "def",
+      "name": "SeparableClosureDescent.stage",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 52
+    },
+    {
+      "end": 62,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.mem_stage",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 58
+    },
+    {
+      "end": 75,
+      "kind": "def",
+      "name": "SeparableClosureDescent.stageInclusion",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 64
+    },
+    {
+      "end": 82,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.coe_stageInclusion_apply",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 77
+    },
+    {
+      "end": 90,
+      "kind": "def",
+      "name": "SeparableClosureDescent.reconstructionMap",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 84
+    },
+    {
+      "end": 98,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.coe_reconstructionMap_tmul",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 92
+    },
+    {
+      "end": 107,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.map_stage_eq_inf",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 100
+    },
+    {
+      "end": 114,
+      "kind": "def",
+      "name": "SeparableClosureDescent.ambientReconstructionMap",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 109
+    },
+    {
+      "end": 139,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.ambientReconstructionMap_eq",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 129
+    },
+    {
+      "end": 155,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.reconstructionMap_injective",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 141
+    },
+    {
+      "end": 182,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.reconstructionMap_surjective_of_basis",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 157
+    },
+    {
+      "end": 192,
+      "kind": "def",
+      "name": "SeparableClosureDescent.reconstructionEquivOfBasis",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 184
+    },
+    {
+      "end": 204,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.coe_reconstructionEquivOfBasis_apply",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 194
+    },
+    {
+      "end": 226,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.extensionMap_trans",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 217
+    },
+    {
+      "end": 237,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.stage_tower",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 228
+    },
+    {
+      "end": 255,
+      "kind": "def",
+      "name": "SeparableClosureDescent.reconstructionEquivTrans",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 248
+    },
+    {
+      "end": 286,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.coe_reconstructionEquivTrans_apply",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 257
+    },
+    {
+      "end": 336,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.exists_finiteGalois_stage_basis",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 307
+    },
+    {
+      "end": 365,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.extensionMap_coefficientwise",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 348
+    },
+    {
+      "end": 378,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.stage_isStable",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 367
+    },
+    {
+      "end": 413,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.exists_finiteGalois_stage",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 388
+    },
+    {
+      "end": 419,
+      "kind": "def",
+      "name": "SeparableClosureDescent.scalarExtensionMap",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 415
+    },
+    {
+      "end": 424,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.scalarExtensionMap_tmul",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 422
+    },
+    {
+      "end": 431,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.scalarExtensionMap_injective",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 426
+    },
+    {
+      "end": 454,
+      "kind": "structure",
+      "name": "SeparableClosureDescent.Package",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 441
+    },
+    {
+      "end": 454,
+      "kind": "ctor",
+      "name": "SeparableClosureDescent.Package.mk",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 441
+    },
+    {
+      "end": 444,
+      "kind": "def",
+      "name": "SeparableClosureDescent.Package.algebra",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 444
+    },
+    {
+      "end": 446,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.Package.isFiniteEtale",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 446
+    },
+    {
+      "end": 448,
+      "kind": "def",
+      "name": "SeparableClosureDescent.Package.reconstruction",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 448
+    },
+    {
+      "end": 450,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.Package.coe_reconstruction",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 450
+    },
+    {
+      "end": 453,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.Package.mem_algebra",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 453
+    },
+    {
+      "end": 474,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.scalarExtensionMap_range_of_equiv",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 457
+    },
+    {
+      "end": 511,
+      "kind": "def",
+      "name": "SeparableClosureDescent.package",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 476
+    },
+    {
+      "end": 519,
+      "kind": "theorem",
+      "name": "SeparableClosureDescent.package_range",
+      "path": "FiniteEtaleAlgebras/SeparableClosureDescent.lean",
+      "start": 513
+    },
+    {
+      "end": 40,
+      "kind": "theorem",
+      "name": "PurelyInseparableDescent.idempotent_mem_range_algebraMap",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 33
+    },
+    {
+      "end": 52,
+      "kind": "theorem",
+      "name": "PurelyInseparableDescent.idempotent_mem_range_includeRight",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 42
+    },
+    {
+      "end": 73,
+      "kind": "structure",
+      "name": "PurelyInseparableDescent.Package",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 59
+    },
+    {
+      "end": 73,
+      "kind": "ctor",
+      "name": "PurelyInseparableDescent.Package.mk",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 59
+    },
+    {
+      "end": 65,
+      "kind": "def",
+      "name": "PurelyInseparableDescent.Package.algebra",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 65
+    },
+    {
+      "end": 67,
+      "kind": "theorem",
+      "name": "PurelyInseparableDescent.Package.isFiniteEtale",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 67
+    },
+    {
+      "end": 69,
+      "kind": "def",
+      "name": "PurelyInseparableDescent.Package.reconstruction",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 69
+    },
+    {
+      "end": 71,
+      "kind": "theorem",
+      "name": "PurelyInseparableDescent.Package.coe_reconstruction",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 71
+    },
+    {
+      "end": 233,
+      "kind": "def",
+      "name": "PurelyInseparableDescent.package",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 75
+    },
+    {
+      "end": 240,
+      "kind": "theorem",
+      "name": "PurelyInseparableDescent.package_range",
+      "path": "FiniteEtaleAlgebras/PurelyInseparableDescent.lean",
+      "start": 235
+    }
+  ],
+  "docgen_revision": "97d4ecdfc8e09e7f511724c25e303d448de6a3db",
+  "format": 1,
+  "inputs": {
+    "Examples/IdempotentSubalgebra.lean": "f1460b52111deaefa24acc8889e6ccbfa8691384fed6f98361ebc0380c4a69aa",
+    "Examples/SeparableClosureDescent.lean": "c8c7e3078f0bc1dd0d25d3348cd387b7b8671518ed9e12cf1d0152f3face22db",
+    "FiniteEtaleAlgebras.lean": "0fbf21e14e8a1f9d9cf5da50f735979d6f6b2ade9beb5200c424862f7067b8fb",
+    "FiniteEtaleAlgebras/MaximalSubalgebra.lean": "46297f7060cb9a0170d63576d083015d12952fa80ee1138602138aee450cd652",
+    "FiniteEtaleAlgebras/PurelyInseparableDescent.lean": "58b8d9ff4ccf5bb24c684e193f4778acee0d3fcd614b207e24799827c11a9d99",
+    "FiniteEtaleAlgebras/SemilinearDescent.lean": "4716ca1f7fdd65b25f79fa3c0737c73f91abff068a62ae8cb262925e3b0d8eda",
+    "FiniteEtaleAlgebras/SeparableClosureDescent.lean": "313607e84083dec9b85b83576cd8f57460de56de41a28a9d7f30336956dc8edc",
+    "FiniteEtaleAlgebras/SpectrumComponents.lean": "73d64a8ee585d8fdf7df7b1767847585cb945dbc95bdff8255aaf0dff966e7fb",
+    "lake-manifest.json": "7dd5c3e1f8e94b5471a18a352bf82e10fd669d6717269ee712471b3e3080b2da",
+    "lakefile.toml": "698f860b0a721148df065551e76613cf7b0228cc2b6cdaac90d3f6d68158595d",
+    "lean-toolchain": "8190e75a201741065fe508b28955dd64dd72d090babe5f70ce6848879d68ae88"
+  },
+  "modules": [
+    "FiniteEtaleAlgebras.MaximalSubalgebra",
+    "FiniteEtaleAlgebras.SemilinearDescent",
+    "FiniteEtaleAlgebras.SpectrumComponents",
+    "FiniteEtaleAlgebras.SeparableClosureDescent",
+    "FiniteEtaleAlgebras.PurelyInseparableDescent",
+    "FiniteEtaleAlgebras",
+    "Examples.IdempotentSubalgebra",
+    "Examples.SeparableClosureDescent"
+  ],
+  "native_input_sha256": "fe5f95513761a0e85ad46780b27aa48ad58722cd4a315b1e5516a0b562a5d87b",
+  "proof_certification": false,
+  "release_acceptance": false
+}
