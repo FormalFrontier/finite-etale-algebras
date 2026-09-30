@@ -20,25 +20,21 @@ sources:
     type: book
     location: >-
       2017 edition, Propositions 1.29 and 1.30; the separable-closure paragraph
-      in the proof of Proposition 1.30(a) is on printed page 15 of iAG2017.pdf.
+      in the proof of Proposition 1.30(a) is on printed page 15.
     relationship: background
     note: >-
       Motivates the algebraic subalgebra and descent questions. This library does
       not claim the complete scheme propositions or complete source coverage.
       The book is not bundled, and no source-author endorsement is claimed.
-  - title: Semilinear finite-etale subalgebra reconstruction
+  - title: Original finite-etale subalgebra and embedded descent APIs
     authors:
       - Formal Frontier Agents
-    type: project mathematical exposition
-    relationship: adapts
+    type: original-proof
+    relationship: independently-proves
     note: >-
-      Earlier original project exposition by a Formalization Worker A execution,
-      followed by separate finite-Galois and finite-stage Lean implementations.
-      The finite-Galois code uses Dedekind independence for the trace-dual
-      identity rather than the exposition's matrix argument. The exposition is
-      not bundled; exact predecessor and execution provenance remains in the
-      development records. Contributor roles are preserved in README.md.
-
+      Original algebraic constructions in the shipped Lean library, developed
+      with earlier project mathematical exposition. This entry does not claim
+      complete formalization of Milne's scheme propositions.
 related_formalizations:
   - id: https://github.com/leanprover-community/mathlib4/tree/83abb3e776bdefcbc447a1e44d0debe4010039e5
     relationship: builds-on
@@ -59,32 +55,26 @@ automation:
 
 status:
   scope: >-
-    Reusable field-base commutative-algebra APIs and ordinary-public-import
-    examples. Ambient commutative algebras may be zero or nonreduced. Greatest
-    finite etale subalgebras require a supplied uniform natural-number rank
-    bound; spectrum results require a separably closed base. Reconstruction
-    retains its stated finite-Galois, separable-closure or purely inseparable
-    extension hypotheses, including a separably closed larger field for the
-    purely inseparable finite-etale reconstruction. Complete source formalization
-    is not claimed; release acceptance and publication are recorded separately.
+    Reusable field-base commutative-algebra APIs and checked example clients;
+    ambient algebras may be zero or nonreduced. Greatest finite etale
+    subalgebras need a supplied uniform natural-number dimension bound.
+    Spectrum dimension bounds need a separably closed base and finitely many
+    source connected components. Finite-Galois and separable-closure descent
+    require coefficientwise stability and their stated extension hypotheses;
+    purely inseparable finite-etale reconstruction requires a separably closed
+    larger field. Complete source formalization is not claimed.
 
 review:
   status: agent-reviewed
   notes: >-
-    The existing mathematical code and public-module/persistent-example migration
-    have independent non-author agent development reviews, including proof-style
-    cleanup and a scoped review of the later theorem-hypothesis generalization
-    and persistent migration clients. Native-generated Markdown API documentation
-    binds the mathematical sources and pins identified in docs/native-input.json.
-    These development reviews do not by themselves approve the complete final
-    artifact, redistribution rights or release. Exact-candidate verification,
-    independent artifact/rights review, acceptance and publication have separate
-    records. Agent review is not human review or source-author endorsement;
-    schema validity does not certify any of those conditions.
+    Mathematical code, public-module clients and later hypothesis generalization
+    received independent non-author agent review. This is not human review,
+    source-author endorsement or a source-coverage decision. Generated API
+    documentation records historical source bindings, not proof certification.
 
 acknowledgements: >-
-  Collective project credit is supplemented by the Lattice and Formalization
-  Worker A/B contribution roles in README.md, plus Anchor's original project
-  documentation recipe adapted by Lattice. Earlier mathematical development
-  is distinguished from later Lean assembly. Mathlib and other external tools
-  retain their own attribution, license terms and notices.
+  Collective project credit includes Lattice's foundational APIs and integration,
+  Anchor's original documentation recipe adapted by Lattice, Folio's mathematical
+  headline explanations, and other Formal Frontier AI contributors' exposition,
+  descent implementations, examples and API work. Mathlib and other external
+  tools retain their own attribution, licenses and notices.

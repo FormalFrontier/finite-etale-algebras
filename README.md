@@ -1,35 +1,68 @@
 # finite-etale-algebras
 
-Reusable Lean theory of finite etale algebras, subalgebra composites, and
-maximal finite etale subalgebras.
+Reusable Lean theory of finite etale algebras, embedded subalgebra descent,
+and connected components of spectra.
 
-The initial unit proves that a surjective image of a finite etale algebra over
-a field is finite etale. Consequently, the supremum of two finite etale
-subalgebras of a commutative algebra is finite etale. It then constructs a
-greatest finite etale subalgebra whenever their dimensions have a uniform
-natural-number bound. The ambient algebra may be the zero ring, and no
-perfectness, algebraic-closedness, reducedness, finite-dimensionality, or
-Noetherianity assumption is made on it.
+## Headline results
 
-Every idempotent in a commutative algebra over a field is contained in a finite
-etale subalgebra: the range of the split algebra `Fin 2 → K` acting through
-the complementary idempotents `e` and `1 - e`. This also requires no
-finite-dimensionality, finite-generation, reducedness, nontriviality, or
-separability assumption on the ambient algebra.
+- **Finite etale subalgebras, composites and idempotents.** Over a field `k`,
+  [surjective images](FiniteEtaleAlgebras/MaximalSubalgebra.lean#L44) of finite
+  etale algebras are finite etale, and
+  [binary suprema](FiniteEtaleAlgebras/MaximalSubalgebra.lean#L129) of finite
+  etale subalgebras of a commutative `k`-algebra `R` remain finite etale. A
+  *supplied* uniform natural-number bound on their dimensions yields a
+  [greatest such subalgebra](FiniteEtaleAlgebras/MaximalSubalgebra.lean#L146);
+  this library does not prove the existence of that bound. Every idempotent
+  [lies in a finite etale subalgebra](FiniteEtaleAlgebras/MaximalSubalgebra.lean#L86),
+  constructed from `Fin 2 → k` using `e` and `1 - e`.
+- **Spectrum component counts.** For a finite etale algebra `S` over a
+  separably closed field `k`, the
+  [component-count theorem](FiniteEtaleAlgebras/SpectrumComponents.lean#L38)
+  identifies `Nat.card (ConnectedComponents (PrimeSpectrum S))` with
+  `Module.finrank k S`. A continuous surjection `X → PrimeSpectrum S`
+  [bounds the dimension](FiniteEtaleAlgebras/SpectrumComponents.lean#L68)
+  by the component count of `X` **when `[Finite (ConnectedComponents X)]`**.
+  Independent universes, zero algebras and empty-space cases are retained.
+- **Finite-Galois and separable-closure embedded descent.** For a finite
+  Galois extension `L/k`, a subalgebra `P` of `L ⊗[k] R` stable under every
+  [coefficientwise automorphism](FiniteEtaleAlgebras/SemilinearDescent.lean)
+  is reconstructed from its honest preimage under `r ↦ 1 ⊗ r`. The
+  [reconstruction equivalence](FiniteEtaleAlgebras/SemilinearDescent.lean#L420)
+  and [range equality](FiniteEtaleAlgebras/SemilinearDescent.lean#L439)
+  identify the *literal ambient* scalar extension with `P`; finite etaleness
+  [descends](FiniteEtaleAlgebras/SemilinearDescent.lean#L446) if `P` is finite
+  etale. For a separable closure `K/k`, the
+  [finite-data layer](FiniteEtaleAlgebras/SeparableClosureDescent.lean)
+  captures an embedded finite-dimensional algebra over a finite Galois
+  intermediate field and is coherent under enlargement. Its
+  [descent package](FiniteEtaleAlgebras/SeparableClosureDescent.lean#L479)
+  reconstructs a finite etale `P` stable under *every* coefficientwise
+  `k`-automorphism of `K`, including preimage membership and literal ambient
+  range equality.
+- **Purely inseparable idempotents and reconstruction.** For a purely
+  inseparable field extension `K/k`, every idempotent of `K ⊗[k] R` belongs to
+  the [range of the right-factor inclusion](FiniteEtaleAlgebras/PurelyInseparableDescent.lean#L45)
+  from `R`; [the reversed tensor orientation](FiniteEtaleAlgebras/PurelyInseparableDescent.lean#L35)
+  is also available. If `K` is additionally separably closed, the
+  [reconstruction package](FiniteEtaleAlgebras/PurelyInseparableDescent.lean#L79)
+  recovers each embedded finite etale `K`-subalgebra from a finite etale
+  `k`-subalgebra of `R`, with equivalence and
+  [range equality](FiniteEtaleAlgebras/PurelyInseparableDescent.lean#L237)
+  agreeing with the literal ambient scalar-extension map. No
+  finite-dimensionality assumption on `K/k` is imposed.
 
-Over a separably closed field, the library also identifies the number of
-connected components of the spectrum of a finite etale algebra with its
-vector-space dimension. Any continuous surjection onto that spectrum then
-bounds the dimension by the source component count. These results allow
-independent universes and retain zero-ring and empty-space edge cases.
+Throughout, the ambient `R` is a commutative algebra over a field; it need
+not be finite-dimensional, finitely generated, reduced or nontrivial (the zero
+ring is allowed). These are noncomputable mathematical interfaces, not
+algorithms for extracting descended algebras. This library's `IsFiniteEtale`
+predicate combines mathlib's `Module.Finite` and `Algebra.Etale`; mathlib also
+supplies the tensor-product, Galois, descent and spectrum infrastructure.
+This repository develops the subalgebra, component-count and literal
+reconstruction interfaces described here. Full signatures appear in the
+[API reference](docs/API.md); source-specific correspondence and coverage
+belong in the respective source repositories, not this reusable library.
 
-For a finite Galois extension `L/k`, the library provides coefficientwise
-semilinear descent for stable `L`-subalgebras of `L ⊗[k] R`. It constructs the
-descended algebra as the honest preimage in `R`, proves that its scalar extension
-is literally the original ambient subalgebra, and exposes the corresponding
-algebra equivalence and range formulas. If the original subalgebra is finite
-etale, the descended algebra is finite etale. No finiteness, reducedness, or
-nontriviality assumption is made on `R`.
+## Descent API compatibility
 
 Nine elementary results in `GaloisDescent` need only `[Field k]`, `[Field L]`,
 `[Algebra k L]`, `[CommRing R]`, and `[Algebra k R]`, not
@@ -42,29 +75,6 @@ positional `@` applications written for the older theorem types must drop the
 two removed instance arguments. The inverse, reconstruction, and full descent
 results within `GaloisDescent` retain `[FiniteDimensional k L]` and
 `[IsGalois k L]`.
-
-For a separable closure `K/k`, the finite-data API captures an embedded
-finite-dimensional subalgebra in one finite Galois intermediate field, proves
-coherence under enlargement of that field, and transfers absolute stability to
-finite-level stability. A stable finite etale subalgebra of `K ⊗[k] R` therefore
-descends to a finite etale subalgebra of `R`, with the reconstruction equivalence,
-preimage membership, and scalar-extension range all stated as literal ambient
-equalities. The construction does not impose finite-generation, reducedness, or
-nontriviality assumptions on `R`.
-
-For a purely inseparable field extension `K/k`, every idempotent of
-`K ⊗[k] R` lies in the literal range of the right-factor inclusion from `R`;
-the factor-reversed `R ⊗[k] K` formulation is also exposed. When `K` is
-separably closed, any embedded finite etale `K`-subalgebra of `K ⊗[k] R`
-is reconstructed from a finite etale `k`-subalgebra of `R`. The resulting
-equivalence and range theorem agree literally with the existing ambient
-scalar-extension map. No finite-dimensionality assumption on `K/k`, or
-reducedness or nontriviality assumption on `R`, is imposed.
-
-This repository is organized around source-independent commutative algebra.
-Interpretation, provenance, correspondence, and coverage for motivating
-sources remain in their source-metadata repositories. Lattice is responsible
-for the initial integration on behalf of the Source-maintainers team.
 
 ## Use
 
@@ -80,8 +90,8 @@ example {K A : Type*} [Field K] [CommRing A] [Algebra K A]
   Subalgebra.exists_isFiniteEtale_of_isIdempotentElem e he
 ```
 
-`Examples/IdempotentSubalgebra.lean` and
-`Examples/SeparableClosureDescent.lean` contain build-checked private clients
+[`Examples/IdempotentSubalgebra.lean`](Examples/IdempotentSubalgebra.lean) and
+[`Examples/SeparableClosureDescent.lean`](Examples/SeparableClosureDescent.lean) contain build-checked private clients
 using only that aggregate import. The thirteen implementation-local proof
 helpers are private and are not part of the public interface.
 
@@ -108,79 +118,67 @@ client file, run `lake env lean Client.lean`. The project pins Lean
 `v4.34.0-rc2` and mathlib `83abb3e776bdefcbc447a1e44d0debe4010039e5`
 in `lean-toolchain`, `lakefile.toml` and `lake-manifest.json`.
 
-The greatest-subalgebra result requires a supplied uniform rank bound; this
-library does not prove one exists. The spectrum results require a separably
-closed base, and the reconstruction results impose their stated Galois,
-separable-closure or purely inseparable field-extension hypotheses. Complete
-source formalization is not claimed. The two
-`unusedSectionVars` overrides in the descent modules have been removed; the
-eleven affected theorems now omit unneeded instances locally, and the generated
-`coefficientwise.eq_1` equation has a targeted docstring.
-Three earlier `haveILetI` overrides were removed by the accepted proof-style
-cleanup. A warning-free ordinary build or selected lint is not full release-lint,
-private-axiom or separate proof-recheck certification. Generated Markdown API
-docs bind the exact mathematical sources and pins identified in
-[native-input.json](docs/native-input.json), including the generalized theorem
-signatures. Exact-candidate check, independent artifact/rights review and release
-acceptance records are separate from these files; the documentation and metadata
-do not themselves establish release acceptance or publication.
-[formalization.yaml](formalization.yaml) records the project's
-scope, sources, AI involvement and development-review status using format v0.4;
-metadata presence or schema validity is not release acceptance.
+### Expected cost
+
+An existing September 27, 2026 Linux native verification run in the pinned
+environment measured 41.507 seconds for matching mathlib-cache retrieval,
+6.338 seconds for cache verification, and 69.961 seconds for the library and
+both example targets (2,591 Lake jobs). These are separate stages with cached
+dependencies, not a cold end-to-end benchmark or a measurement of this
+documentation revision. The separate axiom audit is not included in that build
+time; no uncached mathlib source rebuild was needed or timed.
+
+Allow several minutes for cache preparation and compilation, and additional time
+for proof auditing. As a conservative planning estimate for this mathlib-based
+workload, allow about 15 GiB of total memory headroom; this is **not** a measured
+peak, a demonstrated minimum or a guarantee. Peak resident memory and a portable
+CPU/storage baseline were not measured in these receipts. Network/cache state
+and parallel compilation can materially change costs. Use the matching cache
+rather than silently falling back to a mathlib source rebuild.
+
+The [API documentation guide](docs/README.md) explains the 79 native display
+entries, the signatures' historical source-byte bindings and the separate
+proof-audit boundary. A successful build by itself does not establish the
+transitive standard-axiom status of private declarations. The generated
+documentation and [formalization metadata](formalization.yaml) describe this
+library; they are not proof certificates or source-coverage decisions.
 
 ## Mathematical references and original constructions
 
 J. S. Milne, *Algebraic Groups* (2017), Propositions 1.29 and 1.30, motivates
-the finite-etale subalgebra and descent questions. The separable-closure step
-in the proof of Proposition 1.30(a) is on printed page 15 of `iAG2017.pdf`.
+the finite-etale subalgebra and descent questions; its separable-closure
+discussion in the proof of Proposition 1.30(a) appears on printed page 15.
 This library supplies reusable algebraic ingredients, not the complete scheme
-statements or a claim that either proposition has been fully formalized. The
-book's mathematical authorship remains Milne's; no endorsement is claimed.
+propositions or complete source coverage. No source-author endorsement is
+claimed. Earlier original Formal Frontier mathematical work on semilinear
+reconstruction informed the finite-Galois and finite-stage developments here.
+The Lean implementation uses trace-dual sums and Dedekind independence for
+finite-Galois descent, followed by finite-dimensional capture for descent over
+a separable closure. The earlier project exposition instead used a matrix
+argument for the trace-dual identity. The book and exposition are not bundled.
 
-The finite-Galois and finite-stage approach was developed in Formal Frontier's
-earlier *Semilinear finite-etale subalgebra reconstruction* exposition by
-Formalization Worker A, before the separate Lean implementations credited below.
-The finite-Galois implementation uses trace-dual sums and Dedekind independence;
-finite-dimensional capture then reduces separable-closure descent to a finite
-Galois stage. The earlier exposition used a matrix argument for the relevant
-trace-dual identity. These are mathematical constructions and adaptations, not
-a bundled copy of the book or exposition.
-
-The formal implementation builds on the pinned mathlib APIs for finite-dimensional
-algebras, tensor products, etaleness and descent, Galois theory, trace-dual bases,
-purely inseparable extensions, and spectra. Mathlib and its contributors retain
-their own formalization credit and license notices.
+The implementation builds on pinned [mathlib](https://github.com/leanprover-community/mathlib4/tree/83abb3e776bdefcbc447a1e44d0debe4010039e5)
+APIs for finite-dimensional algebras, tensor products, etaleness, Galois theory,
+trace-dual bases, purely inseparable extensions and spectra. Its contributors
+retain their own formalization credit and license notices.
 
 ## Authors and license
 
 Authors: Formal Frontier Agents
 
 Original Formal Frontier contributions are licensed under [Apache 2.0](LICENSE).
-The formalization was developed with AI agents and human project direction;
-compilation and independent agent review, not AI output alone, support the
-accepted development. The following credit survives independently of the
-development Git history:
+The formalization was developed with AI agents under human project direction
+and independently reviewed by other agents; this is not a claim of human
+mathematical review. Contributor credit survives independently of development
+Git history:
 
 | Contributor identity | Contributions |
 | --- | --- |
 | Lattice | Initial maximal finite-etale subalgebra and spectrum/component APIs; integration and documentation/metadata maintenance. |
-| Anchor | Original project native-documentation markup recipe adapted by Lattice for this library; see docs/README.md. |
-| Formalization Worker A | Earlier semilinear reconstruction exposition; later, separate executions implemented separable-closure descent and its clients, the idempotent-subalgebra theorem/client, and public-module/persistent-example readiness; subsequent residual-lint/API investigation. |
-| Formalization Worker B | Finite-Galois semilinear descent, purely inseparable descent, the later common mathlib-pin update, and subsequent theorem-hypothesis generalization with persistent migration clients. |
+| Anchor | Original project native-documentation markup recipe, adapted by Lattice; see [documentation provenance](docs/README.md#provenance-and-licensing). |
+| Folio | Mathematical headline descriptions and checks of their hypotheses, adapted for this reader guide. |
+| Other Formal Frontier AI contributors | Earlier semilinear reconstruction exposition; finite-Galois, separable-closure and purely inseparable descent; idempotent construction, public imports, examples, hypothesis generalization and migration clients. |
 
-The worker names denote pooled AI service identities, not individual humans or
-one continuous execution. Their distinct contribution/review executions and exact
-predecessor revisions are recorded in development records; later assembly does
-not replace earlier contributor credit. The collective author credit does not
-identify a legal copyright holder. Independent agent reviewers include Atlas,
-Prism and fresh non-author worker executions; their code reviews are not human
-review, source-author endorsement or final release acceptance.
-
-Standing project licensing authorization covers verified original project work,
-including earlier internal contributions reused here. Third-party material retains
-its applicable terms, attribution and notices; mathematical citation alone is not
-permission to copy protected expression. The repository does not bundle the
-source book, exposition or mathlib implementation. Any concrete adapted-expression
-question, generated documentation/assets and the proposed public history still
-require their own independent rights assessment before release. A root license
-or schema-valid metadata alone does not establish that clearance.
+The collective author credit does not identify a legal copyright holder.
+Third-party work retains its own applicable terms and attribution; the repository
+does not bundle Milne's book, the earlier project exposition or mathlib's source.

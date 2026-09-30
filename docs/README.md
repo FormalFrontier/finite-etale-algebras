@@ -2,7 +2,9 @@
 
 [API.md](API.md) is a generated, searchable Markdown reference for the native
 doc-gen4 display entries in all eight shipped modules. See the root
-[mathematical overview and example](../README.md) for scope and use.
+[headline results](../README.md#headline-results) for scope and
+[example](../README.md#use) for use. The
+[shipped Lean modules](../FiniteEtaleAlgebras.lean) are the source of truth.
 
 | Module | Native display entries |
 | --- | ---: |
@@ -28,7 +30,9 @@ Proof auditing and release acceptance are separate.
 All implicit binders, including typeclass hypotheses, are retained when stripping
 native HTML markup. Signatures use native display notation and short names in
 the source module's context; they are not independently compilable declarations
-with proof bodies. Every entry links to its source lines in the same checkout.
+with proof bodies. Every entry links to its source lines in this checkout, for
+example the [greatest-subalgebra theorem](../FiniteEtaleAlgebras/MaximalSubalgebra.lean#L146)
+and the [component bound](../FiniteEtaleAlgebras/SpectrumComponents.lean#L68).
 
 ## Exact inputs and reproduction
 
@@ -38,11 +42,16 @@ both Lake pin/configuration files. It records raw native-record SHA256 hashes,
 the exact name/kind inventory, native generation receipt hash and doc-gen4
 revision `97d4ecdfc8e09e7f511724c25e303d448de6a3db`.
 [api-manifest.json](api-manifest.json) binds the rendered Markdown and input
-manifest. These are content bindings, not signatures or attestations that a
-native command actually ran. Independent review must authenticate the complete
-generation evidence and bind the exact final candidate separately.
+manifest, including source-line positions. The 11 source/pin input files are
+byte-identical in this checkout to the manifest's recorded hashes. The
+historical revision and source labels are functional generation bindings, **not
+public navigation links**: the release's shipped source links above and in
+[API.md](API.md) provide that navigation. These bindings are not signatures,
+proof certificates, or standalone attestations of native execution or release
+acceptance; those require separate evidence.
 
-To reproduce the Markdown from the retained native `fromDb` data directory:
+To reproduce the Markdown, first obtain the separately retained native `fromDb`
+data directory (it is not included in this library's shipped tree):
 
 ```sh
 python3 scripts/generate_api.py --native-data /path/to/doc-data --check
@@ -76,12 +85,14 @@ lake env /path/to/doc-gen4 fromDb --build rendered-api \
 python3 scripts/generate_api.py --native-data rendered-api/doc-data --check
 ```
 
-The immutable-looking source URLs are native generator input labels; these docs
-do not assert that the development commit exists on GitHub. Only relative source
-links are rendered. Regenerating against changed mathematical sources or pins
-requires a new native run, reviewed input inventory and affected verification;
-never update hashes merely to suppress a mismatch. Output directories, binaries
-and the native website's CSS/JavaScript/dependency assets are not shipped here.
+The URL in the command is a historical native generator input label required by
+the recorded manifest, **not** a claim that this development commit is available
+on GitHub. Use the relative source links in this checkout for reading; do not
+substitute a published commit ID for that label without regenerating and
+reviewing the affected bindings. Changed mathematical sources or pins require
+a new native run, reviewed input inventory and affected verification; hashes
+must not be updated merely to suppress a mismatch. Output directories, binaries
+and native website assets are not shipped here.
 
 ## Parentless release snapshots and source archives
 
@@ -97,9 +108,9 @@ For an explicitly supplied source archive without a Git repository, add
 that manifest's commit. Invalid `.git` metadata or an enclosing different
 repository is not an archive. In either fallback, the result establishes only
 content continuity, not the existence of historical Git objects or independent
-native-run provenance. Final release records must identify the actual candidate
-and authenticate its documentation evidence separately; this file cannot contain
-its own commit ID without circularity.
+native-run provenance. Release records authenticate their actual candidate and
+documentation evidence separately; this file cannot contain its own commit ID
+without circularity.
 
 ## Provenance and licensing
 
@@ -113,5 +124,5 @@ Documentation text is taken from this library's original docstrings, with native
 display signatures produced by doc-gen4. The external tool and its contributors
 retain their own credit and terms. No tool implementation, fonts, CSS, JavaScript,
 external dependency documentation, source book or compiled binary is bundled in
-the production documentation. This provenance statement is not final independent
-rights clearance or release acceptance.
+the production documentation. This provenance description does not substitute
+for the release's separate rights and proof-evidence records.
