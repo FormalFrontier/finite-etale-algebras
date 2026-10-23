@@ -191,7 +191,7 @@ noncomputable def package (P : Subalgebra K (K ⊗[k] R))
         Algebra.TensorProduct.tmul_mul_tmul, mul_one, one_mul]
       simp
     | add x y hx hy =>
-      simpa only [map_add, Subalgebra.coe_add] using congrArg₂ (.+.) hx hy
+      simpa only [map_add, Subalgebra.coe_add] using congrArg₂ (· + ·) hx hy
   have hreconstruction_injective : Function.Injective reconstructionHom := by
     have hscalarExtensionMap_injective :
         Function.Injective (SeparableClosureDescent.scalarExtensionMap (K := K) D) := by

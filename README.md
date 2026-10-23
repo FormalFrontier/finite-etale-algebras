@@ -78,6 +78,20 @@ results within `GaloisDescent` retain `[FiniteDimensional k L]` and
 
 ## Use
 
+Add the library to your consumer project's `lakefile.toml`:
+
+```toml
+[[require]]
+name = "finite-etale-algebras"
+git = "https://github.com/FormalFrontier/finite-etale-algebras.git"
+rev = "main"
+```
+
+GitHub `main` contains reviewed releases. Lake resolves the dependency when you
+first add or update it, and `lake-manifest.json` locks the resolved commit until
+the next update. To pin an exact published release, replace `main` with that
+release's commit SHA.
+
 Import `FiniteEtaleAlgebras` for the public API (or import an individual
 `FiniteEtaleAlgebras.*` module). For example, in a Lean file in this project:
 
@@ -90,15 +104,18 @@ example {K A : Type*} [Field K] [CommRing A] [Algebra K A]
   Subalgebra.exists_isFiniteEtale_of_isIdempotentElem e he
 ```
 
-[`Examples/IdempotentSubalgebra.lean`](Examples/IdempotentSubalgebra.lean) and
-[`Examples/SeparableClosureDescent.lean`](Examples/SeparableClosureDescent.lean) contain build-checked private clients
-using only that aggregate import. The thirteen implementation-local proof
-helpers are private and are not part of the public interface.
+[`FiniteEtaleExamples/IdempotentSubalgebra.lean`](FiniteEtaleExamples/IdempotentSubalgebra.lean)
+and [`FiniteEtaleExamples/SeparableClosureDescent.lean`](FiniteEtaleExamples/SeparableClosureDescent.lean)
+provide public standard models: a nontrivial idempotent in a genuinely
+nonreduced product, and descent of the scalar line in the dual numbers.
+See [basis reconstruction and the model contracts](docs/MODELS.md). The examples
+library verifies both canonical modules.
 
-The [generated API reference](docs/API.md) displays native signatures and
-docstrings, including implicit parameters, for all entries emitted by doc-gen4
-from the eight shipped modules. [Generation and scope](docs/README.md) explains
-the source links, generated-declaration limitations and reproducibility contract.
+The [generated API reference](docs/API.md) records signatures and docstrings
+for the historical eight-module snapshot identified by `docs/native-input.json`.
+For the current basis theorem and standard models, see [their mathematical
+contracts](docs/MODELS.md) and Lean source. [Generation and scope](docs/README.md)
+describes the historical reference and its exact-input binding.
 
 ## Build and checks
 
@@ -109,32 +126,23 @@ fetch the matching mathlib cache before building in a fresh checkout:
 lake exe cache get
 lake build --wfail
 lake build --wfail FiniteEtaleAlgebras
-lake build --wfail Examples.IdempotentSubalgebra Examples.SeparableClosureDescent
+lake build --wfail FiniteEtaleExamples
+lake build --wfail FiniteEtaleExamples.IdempotentSubalgebra FiniteEtaleExamples.SeparableClosureDescent
 ```
 
-The default build includes the aggregate library and both example modules;
-the last two commands also build those targets explicitly. For a standalone
+The default build includes both `FiniteEtaleAlgebras` and `FiniteEtaleExamples`.
+The examples library explicitly covers both canonical model modules; the last
+commands also build the library and those modules explicitly. For a standalone
 client file, run `lake env lean Client.lean`. The project pins Lean
 `v4.34.0-rc2` and mathlib `83abb3e776bdefcbc447a1e44d0debe4010039e5`
 in `lean-toolchain`, `lakefile.toml` and `lake-manifest.json`.
 
 ### Expected cost
 
-An existing September 27, 2026 Linux native verification run in the pinned
-environment measured 41.507 seconds for matching mathlib-cache retrieval,
-6.338 seconds for cache verification, and 69.961 seconds for the library and
-both example targets (2,591 Lake jobs). These are separate stages with cached
-dependencies, not a cold end-to-end benchmark or a measurement of this
-documentation revision. The separate axiom audit is not included in that build
-time; no uncached mathlib source rebuild was needed or timed.
-
-Allow several minutes for cache preparation and compilation, and additional time
-for proof auditing. As a conservative planning estimate for this mathlib-based
-workload, allow about 15 GiB of total memory headroom; this is **not** a measured
-peak, a demonstrated minimum or a guarantee. Peak resident memory and a portable
-CPU/storage baseline were not measured in these receipts. Network/cache state
-and parallel compilation can materially change costs. Use the matching cache
-rather than silently falling back to a mathlib source rebuild.
+Allow several minutes for matching-cache preparation and compilation, plus
+additional time for proof auditing. Costs depend on network/cache state and
+parallelism. Use the matching cache rather than silently falling back to a
+mathlib source rebuild.
 
 The [API documentation guide](docs/README.md) explains the 79 native display
 entries, the signatures' historical source-byte bindings and the separate

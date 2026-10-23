@@ -1,10 +1,17 @@
 # API documentation
 
-[API.md](API.md) is a generated, searchable Markdown reference for the native
-doc-gen4 display entries in all eight shipped modules. See the root
-[headline results](../README.md#headline-results) for scope and
-[example](../README.md#use) for use. The
-[shipped Lean modules](../FiniteEtaleAlgebras.lean) are the source of truth.
+[API.md](API.md) is the generated doc-gen4 reference for the historical
+eight-module snapshot `fe7e68f76a3359419c4c44720f4171a421c51fad`, bound by
+`native-input.json` and `api-manifest.json`. Its signatures and the table below
+describe that snapshot, not the current basis theorem or canonical examples.
+For the current mathematical contracts and imports, see [MODELS.md](MODELS.md)
+and the [Lean source](../FiniteEtaleAlgebras.lean).
+
+The renderer binds the snapshot's exact module inventory, source and pin hashes,
+native-record hashes and historical Git input. Reproducing that reference
+requires those snapshot inputs. The generation commands below describe this
+historical binding, not a recipe for documenting changed source files without
+corresponding new native records and input bindings.
 
 | Module | Native display entries |
 | --- | ---: |
@@ -30,9 +37,9 @@ Proof auditing and release acceptance are separate.
 All implicit binders, including typeclass hypotheses, are retained when stripping
 native HTML markup. Signatures use native display notation and short names in
 the source module's context; they are not independently compilable declarations
-with proof bodies. Every entry links to its source lines in this checkout, for
-example the [greatest-subalgebra theorem](../FiniteEtaleAlgebras/MaximalSubalgebra.lean#L146)
-and the [component bound](../FiniteEtaleAlgebras/SpectrumComponents.lean#L68).
+with proof bodies. Source links record the historical module paths and line
+positions. For current declarations and proofs, use the [Lean source](../FiniteEtaleAlgebras.lean)
+and [model contracts](MODELS.md).
 
 ## Exact inputs and reproduction
 
@@ -42,16 +49,19 @@ both Lake pin/configuration files. It records raw native-record SHA256 hashes,
 the exact name/kind inventory, native generation receipt hash and doc-gen4
 revision `97d4ecdfc8e09e7f511724c25e303d448de6a3db`.
 [api-manifest.json](api-manifest.json) binds the rendered Markdown and input
-manifest, including source-line positions. The 11 source/pin input files are
-byte-identical in this checkout to the manifest's recorded hashes. The
+manifest, including source-line positions. The 11 source/pin input bindings
+describe the analyzed snapshot, not the current Lake lint configuration. Exact
+reproduction is subject to the revision and source/pin checks below; unchanged
+Lean files alone do not establish byte identity for every bound input. The
 historical revision and source labels are functional generation bindings, **not
 public navigation links**: the release's shipped source links above and in
 [API.md](API.md) provide that navigation. These bindings are not signatures,
 proof certificates, or standalone attestations of native execution or release
 acceptance; those require separate evidence.
 
-To reproduce the Markdown, first obtain the separately retained native `fromDb`
-data directory (it is not included in this library's shipped tree):
+To reproduce the recorded Markdown, satisfy the exact-input checks below and
+obtain the separately retained native `fromDb` data directory (it is not included
+in this library's shipped tree):
 
 ```sh
 python3 scripts/generate_api.py --native-data /path/to/doc-data --check
@@ -63,7 +73,8 @@ required; no third-party Python packages or Lean build are needed for rendering.
 The tests also run with `python3 -O` and `python3 -OO`; refusal checks do not rely
 on Python assertions.
 
-For fresh native generation, build this project using its pinned environment,
+To reproduce the historical native data, use the exact snapshot inputs above.
+Build that source using its pinned environment,
 first successfully fetching `lake exe cache get`, then `lake build --wfail`.
 Build doc-gen4 at the exact revision above in a separate checkout using its own
 unchanged manifest/toolchain. Its pinned toolchain matches this project's
@@ -101,7 +112,9 @@ its exact source/pin bytes. A present-object mismatch, a noncommit object or any
 Git command/repository error is fatal; it never falls back to trusting hashes.
 Only an explicit `cat-file` missing-object response permits content continuity
 through the exact committed `native-input.json` and matching source/pin bytes.
-This supports parentless release snapshots without importing development history.
+This supports exact-input parentless release snapshots without importing
+development history. A missing historical object does not waive the source/pin
+byte-matching requirement, including the Lake configuration.
 
 For an explicitly supplied source archive without a Git repository, add
 `--source-only`. It checks the same manifest and bytes, but cannot authenticate

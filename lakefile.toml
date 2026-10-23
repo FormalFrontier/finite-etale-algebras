@@ -1,6 +1,13 @@
 name = "finite-etale-algebras"
 version = "0.1.0"
 defaultTargets = ["FiniteEtaleAlgebras", "FiniteEtaleExamples"]
+lintDriver = "batteries/runLinter"
+
+[leanOptions]
+autoImplicit = false
+relaxedAutoImplicit = false
+weak.linter.mathlibStandardSet = true
+weak.linter.style.header = false
 
 [[require]]
 name = "mathlib"
@@ -12,4 +19,4 @@ name = "FiniteEtaleAlgebras"
 
 [[lean_lib]]
 name = "FiniteEtaleExamples"
-roots = ["Examples.IdempotentSubalgebra", "Examples.SeparableClosureDescent"]
+roots = ["FiniteEtaleExamples.IdempotentSubalgebra", "FiniteEtaleExamples.SeparableClosureDescent"]

@@ -154,9 +154,9 @@ theorem reconstructionMap_injective (P : Subalgebra K (K ⊗[k] R)) :
   rw [ambientReconstructionMap_eq] at hamb
   exact fun _ _ h => hamb (congrArg P.val h)
 
-/-- A basis whose ambient vectors are already defined over `L` makes the
-finite-stage reconstruction surjective. -/
-theorem reconstructionMap_surjective_of_basis {ι : Type*} [Fintype ι]
+/-- An arbitrarily indexed basis whose ambient vectors are defined over `L`
+makes the finite-stage reconstruction surjective. -/
+theorem reconstructionMap_surjective_of_basis {ι : Type*}
     (P : Subalgebra K (K ⊗[k] R)) (b : Module.Basis ι K P)
     (hb : ∀ i, (b i : K ⊗[k] R) ∈
       (extensionMap (k := k) (L := L) (K := K) (R := R)).range) :
@@ -175,15 +175,19 @@ theorem reconstructionMap_surjective_of_basis {ι : Type*} [Fintype ι]
     rw [coe_reconstructionMap_tmul, hq]
     change (1 : K ⊗[k] R) * (b i : K ⊗[k] R) = (b i : K ⊗[k] R)
     exact one_mul _
+  let f := b.constr K (fun i => (1 : K) ⊗ₜ[L] z i)
+  have hf : (reconstructionMap (k := k) (L := L) P).toLinearMap.comp f =
+      LinearMap.id := by
+    apply b.ext
+    intro i
+    simpa only [LinearMap.comp_apply, LinearMap.id_apply, f,
+      Module.Basis.constr_basis, AlgHom.toLinearMap_apply] using hz i
   intro y
-  refine ⟨∑ i, (b.repr y i) • (1 ⊗ₜ[L] z i), ?_⟩
-  rw [map_sum]
-  simp_rw [map_smul, hz]
-  exact b.sum_repr y
+  exact ⟨f y, DFunLike.congr_fun hf y⟩
 
-/-- Literal finite-stage reconstruction as an algebra equivalence, in the
+/-- Reconstruction as an algebra equivalence, in the
 orientation from scalar extension of the intersection to the given algebra. -/
-noncomputable def reconstructionEquivOfBasis {ι : Type*} [Fintype ι]
+noncomputable def reconstructionEquivOfBasis {ι : Type*}
     (P : Subalgebra K (K ⊗[k] R)) (b : Module.Basis ι K P)
     (hb : ∀ i, (b i : K ⊗[k] R) ∈
       (extensionMap (k := k) (L := L) (K := K) (R := R)).range) :
@@ -191,9 +195,9 @@ noncomputable def reconstructionEquivOfBasis {ι : Type*} [Fintype ι]
   AlgEquiv.ofBijective (reconstructionMap (k := k) (L := L) P)
     ⟨reconstructionMap_injective P, reconstructionMap_surjective_of_basis P b hb⟩
 
-/-- After coercion to the ambient tensor product, finite-stage reconstruction
-is the literal scalar-extension map. -/
-theorem coe_reconstructionEquivOfBasis_apply {ι : Type*} [Fintype ι]
+/-- After coercion to the ambient tensor product, reconstruction
+is the scalar-extension map. -/
+theorem coe_reconstructionEquivOfBasis_apply {ι : Type*}
     (P : Subalgebra K (K ⊗[k] R)) (b : Module.Basis ι K P)
     (hb : ∀ i, (b i : K ⊗[k] R) ∈
       (extensionMap (k := k) (L := L) (K := K) (R := R)).range)
