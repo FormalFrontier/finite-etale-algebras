@@ -92,8 +92,12 @@ first add or update it, and `lake-manifest.json` locks the resolved commit until
 the next update. To pin an exact published release, replace `main` with that
 release's commit SHA.
 
+Libraries used together must build against a common Mathlib revision and Lean
+toolchain. See [build and checks](#build-and-checks) for this library's pinned
+environment.
+
 Import `FiniteEtaleAlgebras` for the public API (or import an individual
-`FiniteEtaleAlgebras.*` module). For example, in a Lean file in this project:
+`FiniteEtaleAlgebras.*` module). For example, in a Lean client:
 
 ```lean
 import FiniteEtaleAlgebras
