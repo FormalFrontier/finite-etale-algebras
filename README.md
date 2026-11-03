@@ -50,17 +50,34 @@ and connected components of spectra.
   [range equality](FiniteEtaleAlgebras/PurelyInseparableDescent.lean#L237)
   agreeing with the literal ambient scalar-extension map. No
   finite-dimensionality assumption on `K/k` is imposed.
+- **Conditional point lifting.** Let `R → U → B` be compatible algebra maps
+  of commutative rings, with `U` finite as an `R`-module and `B = S⁻¹U`
+  flat over `R`. For `I ⊆ Jac(R)`, the
+  [point-lifting theorem](FiniteEtaleAlgebras/PointLifting.lean#L278) lifts the
+  specified `R`-algebra map `z : B → R/I` to `s : B → R` with
+  `(R → R/I) ∘ s = z`, provided a supplied `ebar ∈ U/IU` has an
+  idempotent lift `ε ∈ U` satisfying `z(β(ε)) = 1` and the following
+  eigencondition: `ebar · (ubar - rbar) = 0` whenever
+  `z(β(u)) = r mod I`. Here `β : U → B` is the structural map and
+  `ubar`, `rbar` are the images of `u`, `r` in `U/IU`.
+  No etaleness or finite-presentation hypothesis on `B` is required. This
+  is conditional on the supplied idempotent; it does not assert that every
+  residue point lifts.
 
-Throughout, the ambient `R` is a commutative algebra over a field; it need
-not be finite-dimensional, finitely generated, reduced or nontrivial (the zero
-ring is allowed). These are noncomputable mathematical interfaces, not
-algorithms for extracting descended algebras. This library's `IsFiniteEtale`
-predicate combines mathlib's `Module.Finite` and `Algebra.Etale`; mathlib also
-supplies the tensor-product, Galois, descent and spectrum infrastructure.
-This repository develops the subalgebra, component-count and literal
-reconstruction interfaces described here. Full signatures appear in the
-[API reference](docs/API.md); source-specific correspondence and coverage
-belong in the respective source repositories, not this reusable library.
+For the finite-etale subalgebra, spectrum and descent results above, the
+ambient `R` is a commutative algebra over a field; it need not be
+finite-dimensional, finitely generated, reduced or nontrivial (the zero ring
+is allowed). The point-lifting theorem instead allows arbitrary commutative
+base rings. These are noncomputable mathematical interfaces, not algorithms
+for extracting descended algebras or lifted points. This library's
+`IsFiniteEtale` predicate combines mathlib's `Module.Finite` and
+`Algebra.Etale`; mathlib also supplies the tensor-product, Galois, descent,
+spectrum and commutative-algebra infrastructure. This repository develops
+the subalgebra, component-count, literal reconstruction and conditional
+point-lifting interfaces described here. See the linked modules for full
+signatures and the [API reference](docs/API.md) for the finite-etale and descent
+interfaces it covers; source-specific correspondence and coverage belong in
+the respective source repositories, not this reusable library.
 
 ## Descent API compatibility
 
@@ -169,10 +186,17 @@ finite-Galois descent, followed by finite-dimensional capture for descent over
 a separable closure. The earlier project exposition instead used a matrix
 argument for the trace-dual identity. The book and exposition are not bundled.
 
+Background for the point-lifting question is I. B. Fesenko and S. V. Vostokov,
+*Local Fields and Their Extensions*, second edition (2002). The conditional
+point-lifting proof combines a finite-cokernel Nakayama argument, an
+`R`-linear retract with the original scalar action, and a principal-ideal
+Nakayama argument for each scalar-kernel element.
+
 The implementation builds on pinned [mathlib](https://github.com/leanprover-community/mathlib4/tree/83abb3e776bdefcbc447a1e44d0debe4010039e5)
 APIs for finite-dimensional algebras, tensor products, etaleness, Galois theory,
-trace-dual bases, purely inseparable extensions and spectra. Its contributors
-retain their own formalization credit and license notices.
+trace-dual bases, purely inseparable extensions, spectra, quotient algebras,
+localization, flat modules, ideal tensor products and Nakayama's lemma. Its
+contributors retain their own formalization credit and license notices.
 
 ## Authors and license
 
@@ -189,7 +213,7 @@ Git history:
 | Lattice | Initial maximal finite-etale subalgebra and spectrum/component APIs; integration and documentation/metadata maintenance. |
 | Anchor | Original project native-documentation markup recipe, adapted by Lattice; see [documentation provenance](docs/README.md#provenance-and-licensing). |
 | Folio | Mathematical headline descriptions and checks of their hypotheses, adapted for this reader guide. |
-| Other Formal Frontier AI contributors | Earlier semilinear reconstruction exposition; finite-Galois, separable-closure and purely inseparable descent; idempotent construction, public imports, examples, hypothesis generalization and migration clients. |
+| Other Formal Frontier AI contributors | Earlier semilinear reconstruction exposition; finite-Galois, separable-closure and purely inseparable descent; idempotent construction, conditional point lifting, public imports, examples, hypothesis generalization and migration clients. |
 
 The collective author credit does not identify a legal copyright holder.
 Third-party work retains its own applicable terms and attribution; the repository

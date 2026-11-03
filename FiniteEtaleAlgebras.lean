@@ -9,6 +9,7 @@ public import FiniteEtaleAlgebras.SeparableClosureDescent
 public import FiniteEtaleAlgebras.PurelyInseparableDescent
 public import FiniteEtaleAlgebras.SemilinearDescent
 public import FiniteEtaleAlgebras.SpectrumComponents
+public import FiniteEtaleAlgebras.PointLifting
 
 /-!
 # Finite etale algebras
